@@ -1,0 +1,45 @@
+/*
+    Structure:
+
+    .spinner
+        .spinner__element
+
+*/
+
+.spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner__element {
+    display: block;
+
+    width: 20px;
+    height: 20px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff #fff #666 #666;
+    border-radius: 50%;
+
+    transform: translateZ(0);
+    animation: rotate 1s infinite linear;
+}

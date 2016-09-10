@@ -1,0 +1,41 @@
+/*
+    Structure:
+
+    .user-repo-item
+        .user-repo-item__link
+            .user-repo-item__name
+            .user-repo-item__stats
+                .user-repo-item__stars
+                .user-repo-item__issues
+
+*/
+
+.user-repo-item {
+    padding: 5px 0;
+
+    background-color: #fff;
+    box-shadow: 0 1px 1px 0 rgba(42,42,42,.4);
+}
+
+.user-repo-item + .user-repo-item {
+    margin-top: 5px;
+}
+
+.user-repo-item__link {
+    display: block;
+    text-decoration: none;
+    color: #666;
+}
+
+.user-repo-item__name {
+    padding: 2px 0;
+    font-weight: bold;
+}
+
+.user-repo-item__stats {
+    display: flex;
+    justify-content: space-around;
+}
+
+.user-repo-item__stars {}
+.user-repo-item__issues {}

@@ -1,0 +1,16 @@
+/*
+    Structure:
+
+    .user-input
+        <Input />
+
+*/
+
+.user-input {
+    padding: 2px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.user-input .input__wrapper {
+    text-align: center;
+}

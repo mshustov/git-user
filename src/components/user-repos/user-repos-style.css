@@ -1,0 +1,13 @@
+.error-message,
+.empty-message {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.error-message {
+    color: red;
+}
+
+.empty-message__username {
+    font-weight: bold;
+}

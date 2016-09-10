@@ -1,0 +1,15 @@
+/*
+    Structure:
+
+    .user-repo-list
+        <UserRepoItem />
+        ...
+        <UserRepoItem />
+
+*/
+
+.user-repo-list {
+    text-align: center;
+
+    background-color: #f0f0f0;
+}
