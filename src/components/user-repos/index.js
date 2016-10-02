@@ -18,7 +18,7 @@ const UserRepos = (props) => {
     const notEmpty = Boolean(props.repos && props.repos.length);
 
     if (notEmpty) {
-        return <UserRepoList repos={props.repos}/>;
+        return <UserRepoList repos={props.repos} />;
     }
 
     if (props.name) {

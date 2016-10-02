@@ -19,6 +19,6 @@ describe('<UserInput />', () => {
         const wrapper = mount(<UserInput {...props} />);
 
         wrapper.find('Input').prop('onChange')();
-        expect(userUpdateRequested).to.have.been.calledOnce;
+        expect(userUpdateRequested).to.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
 });

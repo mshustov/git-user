@@ -1,10 +1,9 @@
-import './polyfills/';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './store/';
 import { Provider } from 'react-redux';
 
+import configureStore from './store/';
+import './polyfills/';
 import App from './components/app/';
 
 const store = configureStore();

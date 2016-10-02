@@ -7,6 +7,7 @@ const UserRepoItem = (props) => (
         <a
             className="user-repo-item__link"
             href={props.svn_url}
+            rel="noopener noreferrer"
             target="_blank"
         >
             <p className="user-repo-item__name">
@@ -32,8 +33,7 @@ UserRepoItem.propTypes = {
     name: PropTypes.string,
     svn_url: PropTypes.string,
     stargazers_count: PropTypes.number,
-    open_issues_count: PropTypes.number,
-    watchers_count: PropTypes.number
+    open_issues_count: PropTypes.number
 };
 
 export default UserRepoItem;

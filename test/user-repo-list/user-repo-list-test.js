@@ -10,7 +10,7 @@ describe('<UserRepoList />', () => {
             repos: [{ id: 1 }, { id: 2 }]
         };
 
-        const wrapper = shallow(<UserRepoList {...props} />) 
+        const wrapper = shallow(<UserRepoList {...props} />);
 
         expect(wrapper.find('UserRepoItem')).to.have.length(props.repos.length);
     });

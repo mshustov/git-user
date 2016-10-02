@@ -9,15 +9,15 @@ class Input extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    getError(error) {
-        if (error) {
-            return (
-                <div className="input__error">
-                    {error}
-                </div>
-            );
-        }
-    }
+    // getError(error) {
+    //     return error
+    //     ? (
+    //         <div className="input__error">
+    //             {error}
+    //         </div>
+    //     )
+    //     : null;
+    // }
 
     handleChange(e) {
         const value = e.target.value;
@@ -45,7 +45,7 @@ class Input extends Component {
                         type={this.props.type}
                     />
                     {this.props.children}
-                    {/*this.getError(this.props.error)*/}
+                    { /* this.getError(this.props.error) */ }
                 </div>
             </div>
         );
