@@ -15,14 +15,10 @@ const UserRepoItem = (props) => (
             </p>
             <div className="user-repo-item__stats">
                 <span className="user-repo-item__stars">
-                    {
-                        `stars: ${props.stargazers_count}`
-                    }
+                    { `stars: ${props.stargazers_count}` }
                 </span>
                 <span className="user-repo-item__issues">
-                    {
-                        `issues: ${props.open_issues_count}`
-                    }
+                    { `issues: ${props.open_issues_count}` }
                 </span>
             </div>
         </a>

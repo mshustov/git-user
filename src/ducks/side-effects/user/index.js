@@ -1,4 +1,5 @@
-import { takeLatest, delay, call, put } from 'redux-saga';
+import { takeLatest, delay } from 'redux-saga';
+import { call, put } from 'redux-saga/effects';
 
 import {
     reposPending,

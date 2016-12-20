@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import UserRepoList from '../user-repo-list/';
 import Spinner from '../spinner/';
+import { userDataSelector } from '../../ducks/pure/user/';
 
 import './user-repos-style.css';
 
@@ -24,7 +25,7 @@ const UserRepos = (props) => {
     if (props.name) {
         return (
             <div className="empty-message">
-                User <b className="empty-message__username">{props.name}</b> has not any repos
+                User <b className="empty-message__username">{props.name}</b> hasn't any repos
             </div>
         );
     }
@@ -32,12 +33,10 @@ const UserRepos = (props) => {
     return null;
 };
 
-const mapStateToProps = (state) => ({
-    name: state.user.name,
-    repos: state.user.repos,
-    error: state.user.error,
-    isPending: state.user.isPending
-});
+const mapStateToProps = (state) => {
+    const { name, repos, error, isPending } = userDataSelector(state);
+    return { name, repos, error, isPending };
+};
 
 UserRepos.propTypes = {
     name: PropTypes.string,

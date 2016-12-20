@@ -76,3 +76,5 @@ export const saveUsername = (payload) => ({
 export const resetUser = () => ({
     type: USER_RESETED
 });
+
+export const userDataSelector = state => state.user;
