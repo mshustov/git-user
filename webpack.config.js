@@ -1,6 +1,5 @@
 var webpack = require('webpack');
 var path = require('path');
-var failPlugin = require('webpack-fail-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -14,23 +13,22 @@ module.exports = {
         filename: 'bundle.js'
     },
 
-    devtool: ['source-map'],
+    devtool: 'source-map',
 
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel'
+                use: ['babel-loader']
             },
             {
                 test: /\.css$/,
-                loader: 'style!css'
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
     plugins: [
-        failPlugin,
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
