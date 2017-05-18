@@ -18,7 +18,8 @@ var app =  {
         pathinfo: true,
         publicPath: '/',
         path: path.resolve('./build/'),
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].[hash].js'
     },
 
     // devtool: 'source-map',
@@ -30,6 +31,7 @@ var app =  {
             use: [{
                 loader: 'babel-loader',
                 options: {
+                    babelrc: false,
                     presets: [
                         ['env', {
                             targets: {
@@ -56,6 +58,11 @@ var app =  {
     plugins: [
         // new RuntimeAnalyzerPlugin(),
         new WriteFilePlugin({ log: false }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'polyfill',
+        //     filename: 'polyfill.js',
+        //     minChunks: Infinity
+        // }),
         new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development')
@@ -143,4 +150,4 @@ var node =  {
     ]
 };
 
-module.exports = node;
+module.exports = app;
