@@ -3,7 +3,7 @@ import { call, put, takeLatest, all, delay } from 'redux-saga/effects';
 import {
     reposPending,
     reposReceived,
-    reposFetchFailed,
+    // reposFetchFailed,
     saveUsername,
     resetUser
 } from '../../pure/user/';
@@ -36,7 +36,8 @@ export function* userUpdateHandler(context, action) {
     // try {
     yield put(saveUsername(value));
     yield put(reposPending());
-    // lol();
+    // uncomment to generate runtime error
+    // undefiedVar();
     const { api } = context;
     const repos = yield call(apiCaller, api, value);
 
