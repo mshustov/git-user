@@ -7,7 +7,6 @@ import api from '../utils/api';
 
 export default function configureStore({ initialState } = {}) {
     const sagaMiddleware = createSagaMiddleware();
-
     const middlewares = compose(
         applyMiddleware(sagaMiddleware),
         (
@@ -29,6 +28,7 @@ export default function configureStore({ initialState } = {}) {
     );
 
     const context = { api };
+
     sagaMiddleware.run(rootSaga, context);
 
     return store;

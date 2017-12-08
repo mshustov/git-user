@@ -1,9 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
-// var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WriteFilePlugin = require('write-file-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// var RuntimeAnalyzerPlugin = require('webpack-runtime-analyzer');
 
 var pkg = require('./package.json');
 var DEBUG = process.env.NODE_ENV !== 'production';
@@ -11,7 +9,6 @@ var DEBUG = process.env.NODE_ENV !== 'production';
 var app =  {
     entry: {
         app: path.resolve('./src/input.js')
-        // polyfill: path.resolve('./src/poly.js'),
     },
 
     output: {
@@ -27,10 +24,6 @@ var app =  {
 
     module: {
         loaders: [{
-            test: /\.js?$/,
-            use: ['source-map-loader'],
-            enforce: 'pre'
-        }, {
             test: /\.jsx?$/,
             exclude: /node_modules/,
             use: [{
@@ -40,7 +33,7 @@ var app =  {
                     presets: [
                         ['env', {
                             targets: {
-                                browsers: pkg.browserslist,
+                                browsers: 'Chrome 62'//pkg.browserslist,
                             },
                             modules: false,
                             useBuiltIns: true,
@@ -48,6 +41,11 @@ var app =  {
                         }],
                         'react',
                         // ...DEBUG ? ['react-hmre'] : [/*'react-optimize'*/]
+                    ],
+                    plugins: [
+                        ['transform-redux-saga-source', {
+                            basePath: process.cwd()
+                        }]
                     ]
                 }
             }
@@ -67,40 +65,39 @@ var app =  {
     },
 
     plugins: [
-        // new RuntimeAnalyzerPlugin(),
-        // new WriteFilePlugin({ log: false }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'polyfill',
-        //     filename: 'polyfill.js',
-        //     minChunks: Infinity
-        // }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            minimize: true,
-            sourceMap: true,
-            comments: false,
-            compress: {
-                drop_console: true,
-                drop_debugger: true,
-                warnings: false,
-                unused: true,
-                dead_code: true,
-                screw_ie8: true,
-            },
-            mangle: {
-                screw_ie8: true,
-            },
-            output: {
-                comments: false,
-                screw_ie8: true,
-            },
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
         }),
         new ExtractTextPlugin({
             filename: 'main.css',
             allChunks: true
-        })
+        }),
+        ...DEBUG ?
+        [
+            // new WriteFilePlugin({ log: false }),
+        ] :
+        [
+            new webpack.optimize.UglifyJsPlugin({
+                minimize: true,
+                sourceMap: true,
+                comments: false,
+                compress: {
+                    drop_console: true,
+                    drop_debugger: true,
+                    warnings: false,
+                    unused: true,
+                    dead_code: true,
+                    screw_ie8: true,
+                },
+                mangle: {
+                    screw_ie8: true,
+                },
+                output: {
+                    comments: false,
+                    screw_ie8: true,
+                },
+            }),
+        ]
         // new HtmlWebpackPlugin({
         //     template: './index.html',
         //     minify: {
@@ -122,56 +119,5 @@ var app =  {
     //     }
     // }
 };
-
-// var node =  {
-//     entry: {
-//         app: path.resolve('./src/node.js')
-//     },
-
-//     output: {
-//         pathinfo: true,
-//         publicPath: '/',
-//         path: path.resolve('./build/'),
-//         filename: '[name].bundle.js'
-//     },
-
-//     devtool: 'source-map',
-
-//     module: {
-//         loaders: [{
-//             test: /\.jsx?$/,
-//             exclude: /node_modules/,
-//             use: [{
-//                 loader: 'babel-loader',
-//                 options: {
-//                     presets: [
-//                         ['env', {
-//                             targets: {
-//                                 node: "current"
-//                             },
-//                             // exclude: [
-//                             //     'web.timers',
-//                             //     'web.immediate',
-//                             //     'web.dom.iterable'
-//                             // ],
-//                             modules: false,
-//                             // useBuiltIns: true,
-//                             debug: true,
-//                         }],
-//                         'react',
-//                         // ...DEBUG ? ['react-hmre'] : [/*'react-optimize'*/]
-//                     ]
-//                 }
-//             }]
-//         }]
-//     },
-
-//     plugins: [
-//         new webpack.NoEmitOnErrorsPlugin(),
-//         new webpack.DefinePlugin({
-//             'process.env.NODE_ENV': JSON.stringify('development')
-//         })
-//     ]
-// };
 
 module.exports = app;

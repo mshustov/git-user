@@ -1,5 +1,5 @@
-import { takeLatest, delay } from 'redux-saga';
-import { call, put } from 'redux-saga/effects';
+import { delay } from 'redux-saga';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import {
     reposPending,
@@ -21,6 +21,10 @@ export const USER_REQUEST_DELAY = 200;
 // ----------------------------------------------------------------------------
 // Sagas
 // ----------------------------------------------------------------------------
+export function* apiCaller(api, value) {
+    const result = yield call(api.getRepos, value);
+    return result;
+}
 
 export function* userUpdateHandler(context, action) {
     const value = action.payload;
@@ -30,21 +34,21 @@ export function* userUpdateHandler(context, action) {
     }
 
     yield call(delay, USER_REQUEST_DELAY);
-    try {
-        yield put(saveUsername(value));
-        yield put(reposPending());
+    // try {
+    yield put(saveUsername(value));
+    yield put(reposPending());
+    // lol()
+    const { api } = context;
+    const repos = yield call(apiCaller, api, value);
 
-        const { api } = context;
-        const repos = yield call(api.getRepos, value);
-
-        yield put(reposReceived(repos));
-    } catch (error) {
-        yield put(reposFetchFailed(error));
-    }
+    yield put(reposReceived(repos));
+    // } catch (error) {
+    //     yield put(reposFetchFailed(error));
+    // }
 }
 
 export function* userUpdateSaga(context) {
-    yield* takeLatest(USER_UPDATE_REQUESTED, userUpdateHandler, context);
+    yield takeLatest(USER_UPDATE_REQUESTED, userUpdateHandler, context);
 }
 
 export function* userSaga(context) {
