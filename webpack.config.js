@@ -43,7 +43,7 @@ var app =  {
                         // ...DEBUG ? ['react-hmre'] : [/*'react-optimize'*/]
                     ],
                     plugins: [
-                        ['transform-redux-saga-source', {
+                        ['babel-plugin-transform-redux-saga-source', {
                             basePath: process.cwd()
                         }]
                     ]

@@ -11,7 +11,8 @@ function makeRequest(url) {
 }
 
 function getRepos(userName) {
-    throw new Error('oops'); // const url = `https://api.github.com/users/${userName}/repos?type=all&sort=updated&per_page=100`;
+    throw new Error('oops');
+    // const url = `https://api.github.com/users/${userName}/repos?type=all&sort=updated&per_page=100`;
 
     return makeRequest(url);
 }

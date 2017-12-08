@@ -1,5 +1,4 @@
-import { delay } from 'redux-saga';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, all, delay } from 'redux-saga/effects';
 
 import {
     reposPending,
@@ -37,7 +36,7 @@ export function* userUpdateHandler(context, action) {
     // try {
     yield put(saveUsername(value));
     yield put(reposPending());
-    // lol()
+    // lol();
     const { api } = context;
     const repos = yield call(apiCaller, api, value);
 
@@ -52,9 +51,9 @@ export function* userUpdateSaga(context) {
 }
 
 export function* userSaga(context) {
-    yield [
+    yield all([
         userUpdateSaga(context)
-    ];
+    ]);
 }
 
 // ----------------------------------------------------------------------------
