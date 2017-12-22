@@ -36,6 +36,8 @@
     "jsdom-global": "^2.1.0",
     "mocha": "^3.0.2",
     "react-addons-test-utils": "^15.3.1",
+    "rempl": "^1.0.0-alpha.19",
+    "rempl-cli": "^1.2.0",
     "sinon": "^1.17.5",
     "style-loader": "^0.13.1",
     "webpack": "2.4.1",

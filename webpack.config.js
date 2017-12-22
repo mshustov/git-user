@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+module.exports = [{
     entry: {
         app: path.join(__dirname, '/src/client.js')
     },
@@ -10,7 +10,7 @@ module.exports = {
     output: {
         publicPath: '/',
         path: path.join(__dirname, './build/'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     },
 
     devtool: 'source-map',
@@ -53,4 +53,17 @@ module.exports = {
             warnings: false
         }
     }
-};
+}, {
+    name: 'rempl',
+
+    entry: {
+        rempl: path.join(__dirname, './rempl-browser-ui.js'),
+    },
+
+    output: {
+        path: path.join(__dirname,'./build/'),
+        filename: 'rempl-browser-ui.js',
+        library: 'rempl',
+        libraryTarget: 'umd'
+    },
+}];
