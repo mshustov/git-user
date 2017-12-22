@@ -33,7 +33,7 @@ var app =  {
                     presets: [
                         ['env', {
                             targets: {
-                                browsers: 'Chrome 62'//pkg.browserslist,
+                                browsers: pkg.browserslist,
                             },
                             modules: false,
                             useBuiltIns: true,
@@ -44,7 +44,8 @@ var app =  {
                     ],
                     plugins: [
                         ['babel-plugin-transform-redux-saga-source', {
-                            basePath: process.cwd()
+                            basePath: process.cwd(),
+                            useSymbol: true
                         }]
                     ]
                 }

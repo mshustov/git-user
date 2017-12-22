@@ -1,4 +1,4 @@
-import { call, put, takeLatest, all, delay } from 'redux-saga/effects';
+import { call, put, takeLatest, all, delay, race } from 'redux-saga/effects';
 
 import {
     reposPending,
@@ -39,7 +39,10 @@ export function* userUpdateHandler(context, action) {
     // uncomment to generate runtime error
     // undefiedVar();
     const { api } = context;
-    const repos = yield call(apiCaller, api, value);
+    const repos = yield race({
+        timeout: delay(3000),
+        repos: call(apiCaller, api, value)
+    });
 
     yield put(reposReceived(repos));
     // } catch (error) {
