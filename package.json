@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "restrry/git-user-info",
   "browserslist": [
-    "Chrome 62"
+    "> 1%"
   ],
   "dependencies": {
     "babel-plugin-transform-runtime": "^6.4.3",
@@ -16,7 +16,7 @@
     "react-dom": "15.4.1",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
-    "redux-saga": "github:restrry/redux-saga#error-source",
+    "redux-saga": "restrry/redux-saga#error-source",
     "regenerator-runtime": "^0.10.3",
     "whatwg-fetch": "^1.0.0"
   },
@@ -29,7 +29,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.1.0",
     "babel-preset-react-optimize": "^1.0.1",
-    "babel-plugin-transform-redux-saga-source": "github:restrry/babel-plugin-transform-redux-saga-source",
+    "babel-plugin-transform-redux-saga-source": "restrry/babel-plugin-transform-redux-saga-source#master",
     "chai": "^3.5.0",
     "css-loader": "^0.25.0",
     "enzyme": "^2.4.1",

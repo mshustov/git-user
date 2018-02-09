@@ -19,7 +19,7 @@ var app =  {
         chunkFilename: '[name]'
     },
 
-    // devtool: 'source-map',
+    devtool: 'source-map',
     profile: true,
 
     module: {
@@ -44,8 +44,7 @@ var app =  {
                     ],
                     plugins: [
                         ['babel-plugin-transform-redux-saga-source', {
-                            basePath: process.cwd(),
-                            useSymbol: true
+                            basePath: process.cwd()
                         }]
                     ]
                 }
